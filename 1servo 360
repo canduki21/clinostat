@@ -1,0 +1,13 @@
+#include <Servo.h>  
+ Servo myservo; 
+
+ int pos = 0;  
+
+
+ void setup() {    
+  myservo.attach(8);    
+ 
+  myservo.write(10);     
+ } 
+ void loop(){
+  }
