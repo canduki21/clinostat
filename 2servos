@@ -1,0 +1,32 @@
+#include <Servo.h>
+
+Servo servo1;  
+Servo servo2; 
+
+void setup() {
+  servo1.attach(8);  
+  servo2.attach(4);  
+  Serial.begin(9600);  
+  Serial.println("Enter values for servo1 and servo2 (0 to 180):");
+}
+
+void loop() {
+  static int value1 = 90;  
+  static int value2 = 90;  
+  
+  if (Serial.available() > 0) {
+    value1 = Serial.parseInt();  
+    value2 = Serial.parseInt();  
+
+    if ((value1 >= 0 && value1 <= 180) && (value2 >= 0 && value2 <= 180)) {
+      Serial.print("Servo1 set to: ");
+      Serial.print(value1);
+      Serial.print("  Servo2 set to: ");
+      Serial.println(value2);
+    } 
+  }
+  
+  servo1.write(value1); 
+  servo2.write(value2);  
+  delay(20); 
+}
